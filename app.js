@@ -58,11 +58,8 @@ should return 'johnsmith@example.com'.
 Complete the exercise in the space below:
 */
 function generateEmail(name, domain) {
-    return `${name}${domain}`
-
+    return `${name}@${domain}`;
 }
-
-
 
 console.log('Exercise 4 Result:', generateEmail("johnsmith", "example.com"));
 
@@ -77,10 +74,9 @@ Example: greetUser('Sam', 'morning') should return "Good morning, Sam!"
 
 Complete the exercise in the space below:
 */
-function greetUser(name, timeOftheday) {
-    return `${name},${timeOftheday}`
+function greetUser(name, timeOfTheDay) {
+    return `Good ${timeOfTheDay}, ${name}!`;
 }
-
 
 console.log('Exercise 5 Result:', greetUser("Sam", "morning"));
 
@@ -95,31 +91,19 @@ Example: maxOfThree(17, 4, 9) should return 17.
 Complete the exercise in the space below:
 */
 function maxOfThree(num1, num2, num3) {
-    let max
-    if (num1 > num2) {
-        max = num1
-    }
-    else if (num2 > num1) {
-        max = num2
-    }
-    else if (num1 > num3) {
-        max = num1
+    let max = num1;
 
+    if (num2 > max) {
+        max = num2;
     }
-    else if (num3 > num1) {
-        max = num3
-    }
-    else if (num2 > num3) {
-        max = num2
-    }
-    else if (num3 > num2) {
-        max = num3
-    }
-    return max
 
+    if (num3 > max) {
+        max = num3;
+    }
 
-
+    return max;
 }
+
 console.log('Exercise 6 Result:', maxOfThree(5, 10, 8));
 
 /*
@@ -155,11 +139,15 @@ Example: convertTemperature(32, 'F') should return 0 (Celsius).
 Complete the exercise in the space below:
 */
 function convertTemperature(temperature, scale) {
-    if (scale === 'C') {
-        return (temperature * 9 / 5) + 32;
-    } else if (scale === 'F') {
-        return (temperature - 32) * 5 / 9;
+    scale = scale.toUpperCase();
 
+    if (scale === 'C'||scale === 'c') {
+        return (temperature * 9 / 5) + 32;
+    } else if (scale === 'F'|| scale === "f"){
+        return (temperature - 32) * 5 / 9;
+    }
+    else {
+        return 'Invalid scale';
     }
 }
 
@@ -193,6 +181,9 @@ function basicCalculator(num1, num2, operation) {
     if (operation === "divide") {
         return num1 / num2
     }
+    else {
+        return 'Invalid scale';
+    }
 
 }
 console.log('Exercise 9 Result:', basicCalculator(10, 5, "subtract"));
@@ -222,7 +213,7 @@ function calculateGrade(grade) {
     else if (grade <= 79 && grade >= 70) {
         return 'C'
     }
-    else if (grade <= 69 & grade >= 60) {
+    else if (grade <= 69 && grade >= 60) {
         return 'D'
     } else {
         return 'F'
